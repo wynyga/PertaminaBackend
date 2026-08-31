@@ -8,8 +8,8 @@ namespace Business.Services
 
         public EncryptionService()
         {
-            // Salt is hardcoded here for simplicity, but ideally should be in .env
-            _hashids = new Hashids("PertaminaBackend_SuperSecretSalt_2026", minHashLength: 8);
+            var salt = Environment.GetEnvironmentVariable("HASHIDS_SALT") ?? "DefaultFallbackSalt_2026";
+            _hashids = new Hashids(salt, minHashLength: 8);
         }
 
         public string EncryptId(int id)
