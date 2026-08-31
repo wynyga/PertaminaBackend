@@ -28,6 +28,13 @@ builder.Services.AddScoped<IProjectService, ProjectService>();
 builder.Services.AddScoped<IDashboardService, DashboardService>();
 builder.Services.AddSingleton<IEncryptionService, EncryptionService>();
 
+// Registrasi HttpClient untuk External API
+builder.Services.AddHttpClient<IWeatherService, WeatherService>(client =>
+{
+    client.BaseAddress = new Uri("https://wttr.in/");
+    client.Timeout = TimeSpan.FromSeconds(5); // Simulasi timeout ketat (5 detik)
+});
+
 // JWT Authentication
 var secret = Environment.GetEnvironmentVariable("JwtSettings__Secret") ?? "";
 var issuer = Environment.GetEnvironmentVariable("JwtSettings__Issuer");
