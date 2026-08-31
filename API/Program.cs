@@ -7,10 +7,10 @@ using Business.Services;
 using Data;
 using Data.Repositories;
 
-var builder = WebApplication.CreateBuilder(args);
-
 // Load .env variables
 DotNetEnv.Env.Load();
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
