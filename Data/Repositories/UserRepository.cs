@@ -28,6 +28,21 @@ namespace Data.Repositories
             await _context.SaveChangesAsync();
             return user;
         }
+
+        public async Task<List<User>> GetAllUsersAsync()
+        {
+            return await _context.Users.ToListAsync();
+        }
+
+        public async Task UpdateUserRoleAsync(int id, string role)
+        {
+            var user = await GetUserByIdAsync(id);
+            if (user != null)
+            {
+                user.Role = role;
+                await _context.SaveChangesAsync();
+            }
+        }
     }
 }
 

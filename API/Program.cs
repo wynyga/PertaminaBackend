@@ -23,6 +23,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // Dependency Injection
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddSingleton<IEncryptionService, EncryptionService>();
 
 // JWT Authentication
 var secret = Environment.GetEnvironmentVariable("JwtSettings__Secret") ?? "";
