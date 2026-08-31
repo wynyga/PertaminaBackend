@@ -7,8 +7,8 @@ using Business.Services;
 using Data;
 using Data.Repositories;
 
-// Load .env variables
-DotNetEnv.Env.Load();
+// Load .env variables by traversing up directories
+DotNetEnv.Env.TraversePath().Load();
 
 var builder = WebApplication.CreateBuilder(args);
 
