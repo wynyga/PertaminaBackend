@@ -30,7 +30,12 @@ namespace Business.Services
             }
 
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.UTF8.GetBytes(_configuration["JwtSettings:Secret"]!);
+            var secret = Environment.GetEnvironmentVariable("JwtSettings__Secret") ?? "";
+            var issuer = Environment.GetEnvironmentVariable("JwtSettings__Issuer");
+            var audience = Environment.GetEnvironmentVariable("JwtSettings__Audience");
+            var expirationStr = Environment.GetEnvironmentVariable("JwtSettings__ExpirationInMinutes") ?? "60";
+            
+            var key = Encoding.UTF8.GetBytes(secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new[]
@@ -38,9 +43,9 @@ namespace Business.Services
                     new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
                     new Claim(ClaimTypes.Email, user.Email)
                 }),
-                Expires = DateTime.UtcNow.AddMinutes(double.Parse(_configuration["JwtSettings:ExpirationInMinutes"]!)),
-                Issuer = _configuration["JwtSettings:Issuer"],
-                Audience = _configuration["JwtSettings:Audience"],
+                Expires = DateTime.UtcNow.AddMinutes(double.Parse(expirationStr)),
+                Issuer = issuer,
+                Audience = audience,
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
 
@@ -49,7 +54,7 @@ namespace Business.Services
             return new LoginResponseDTO
             {
                 Token = tokenHandler.WriteToken(token),
-                ExpiresIn = int.Parse(_configuration["JwtSettings:ExpirationInMinutes"]!) * 60
+                ExpiresIn = int.Parse(expirationStr) * 60
             };
         }
 
