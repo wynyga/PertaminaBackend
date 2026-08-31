@@ -10,6 +10,7 @@ namespace Data
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Project> Projects { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -19,6 +20,11 @@ namespace Data
             modelBuilder.Entity<User>(entity => 
             {
                 entity.HasIndex(e => e.Email).IsUnique();
+            });
+
+            modelBuilder.Entity<Project>(entity =>
+            {
+                entity.HasIndex(e => e.ProjectName).IsUnique();
             });
         }
     }
