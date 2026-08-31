@@ -17,6 +17,23 @@ namespace API.Controllers
             _authService = authService;
         }
 
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] RegisterRequestDTO request)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var response = await _authService.RegisterAsync(request);
+            if (response == null)
+            {
+                return Conflict(new { Message = "Email sudah digunakan." });
+            }
+
+            return Ok(new { Message = "Registrasi berhasil.", Data = response });
+        }
+
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginRequestDTO request)
         {

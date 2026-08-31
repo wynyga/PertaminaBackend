@@ -6,6 +6,7 @@ namespace Business.Services
     {
         Task<LoginResponseDTO?> LoginAsync(LoginRequestDTO request);
         Task<UserProfileDTO?> GetProfileAsync(int userId);
+        Task<UserProfileDTO?> RegisterAsync(RegisterRequestDTO request);
     }
 }
 

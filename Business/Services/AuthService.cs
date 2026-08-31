@@ -64,6 +64,30 @@ namespace Business.Services
                 Email = user.Email
             };
         }
+
+        public async Task<UserProfileDTO?> RegisterAsync(RegisterRequestDTO request)
+        {
+            // Cek apakah email sudah terdaftar
+            var existingUser = await _userRepository.GetUserByEmailAsync(request.Email);
+            if (existingUser != null)
+            {
+                return null; 
+            }
+
+            var user = new Models.Entities.User
+            {
+                Email = request.Email,
+                PasswordHash = BCrypt.Net.BCrypt.HashPassword(request.Password)
+            };
+
+            await _userRepository.AddUserAsync(user);
+
+            return new UserProfileDTO
+            {
+                Id = user.Id,
+                Email = user.Email
+            };
+        }
     }
 }
 

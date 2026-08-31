@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Can\\Project\\.Net\\PertaminaBackend\\Models\\Models.csproj": {}
+    "d:\\Can\\Project\\.Net\\PertaminaBackend\\Models\\Models.csproj": {}
   },
   "projects": {
-    "D:\\Can\\Project\\.Net\\PertaminaBackend\\Models\\Models.csproj": {
+    "d:\\Can\\Project\\.Net\\PertaminaBackend\\Models\\Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Can\\Project\\.Net\\PertaminaBackend\\Models\\Models.csproj",
+        "projectUniqueName": "d:\\Can\\Project\\.Net\\PertaminaBackend\\Models\\Models.csproj",
         "projectName": "Models",
-        "projectPath": "D:\\Can\\Project\\.Net\\PertaminaBackend\\Models\\Models.csproj",
+        "projectPath": "d:\\Can\\Project\\.Net\\PertaminaBackend\\Models\\Models.csproj",
         "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "D:\\Can\\Project\\.Net\\PertaminaBackend\\Models\\obj\\",
+        "outputPath": "d:\\Can\\Project\\.Net\\PertaminaBackend\\Models\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"

@@ -739,8 +739,8 @@
           "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {
-            "D:\\Can\\Project\\.Net\\PertaminaBackend\\Models\\Models.csproj": {
-              "projectPath": "D:\\Can\\Project\\.Net\\PertaminaBackend\\Models\\Models.csproj"
+            "d:\\Can\\Project\\.Net\\PertaminaBackend\\Models\\Models.csproj": {
+              "projectPath": "d:\\Can\\Project\\.Net\\PertaminaBackend\\Models\\Models.csproj"
             }
           }
         }
